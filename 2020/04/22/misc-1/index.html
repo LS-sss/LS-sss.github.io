@@ -6,17 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="misc的学习BUUCTF-Misc你竟然赶我走 1、查看一下属性-详细信息（什么也没发现） 2、用WinHex打开，看看旁边的ASCII，可能flag就隐藏在里面。拉到最后  然后就看到了flag。。。">
+    <meta name="description" content="misc的学习BUUCTF-Misc-基础题你竟然赶我走 1、查看一下属性-详细信息（什么也没发现） 2、用WinHex打开，看看旁边的ASCII，可能flag就隐藏在里面。拉到最后  然后就看到了flag。。。  LBS 1、根据题目提示是LBS隐写 2、直接用StegSolve打开-&gt;Analyse-&gt;Data Extract 一般是RGB最后三个字节，那就先试试  然后Previ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="misc_1">
 <meta property="og:url" content="http://yoursite.com/2020/04/22/misc-1/index.html">
 <meta property="og:site_name" content="lazy&#39;s blog">
-<meta property="og:description" content="misc的学习BUUCTF-Misc你竟然赶我走 1、查看一下属性-详细信息（什么也没发现） 2、用WinHex打开，看看旁边的ASCII，可能flag就隐藏在里面。拉到最后  然后就看到了flag。。。">
+<meta property="og:description" content="misc的学习BUUCTF-Misc-基础题你竟然赶我走 1、查看一下属性-详细信息（什么也没发现） 2、用WinHex打开，看看旁边的ASCII，可能flag就隐藏在里面。拉到最后  然后就看到了flag。。。  LBS 1、根据题目提示是LBS隐写 2、直接用StegSolve打开-&gt;Analyse-&gt;Data Extract 一般是RGB最后三个字节，那就先试试  然后Previ">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/biubiu.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/misc-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/flag11.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/2-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/2-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/misc-1/flag.png">
 <meta property="article:published_time" content="2020-04-22T15:20:55.000Z">
-<meta property="article:modified_time" content="2020-04-22T17:29:29.340Z">
+<meta property="article:modified_time" content="2020-04-24T13:58:24.208Z">
 <meta property="article:author" content="lazy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/22/misc-1/biubiu.jpg">
@@ -110,7 +114,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc的学习"><span class="toc-number">1.</span> <span class="toc-text">misc的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BUUCTF-Misc"><span class="toc-number">1.1.</span> <span class="toc-text">BUUCTF-Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#你竟然赶我走"><span class="toc-number">1.1.1.</span> <span class="toc-text">你竟然赶我走</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc的学习"><span class="toc-number">1.</span> <span class="toc-text">misc的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BUUCTF-Misc-基础题"><span class="toc-number">1.1.</span> <span class="toc-text">BUUCTF-Misc-基础题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#你竟然赶我走"><span class="toc-number">1.1.1.</span> <span class="toc-text">你竟然赶我走</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LBS"><span class="toc-number">1.1.2.</span> <span class="toc-text">LBS</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -149,11 +153,23 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="misc的学习"><a href="#misc的学习" class="headerlink" title="misc的学习"></a>misc的学习</h1><h2 id="BUUCTF-Misc"><a href="#BUUCTF-Misc" class="headerlink" title="BUUCTF-Misc"></a>BUUCTF-Misc</h2><h3 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h3><p><img src="/2020/04/22/misc-1/biubiu.jpg" alt="logo"></p>
+    <h1 id="misc的学习"><a href="#misc的学习" class="headerlink" title="misc的学习"></a>misc的学习</h1><h2 id="BUUCTF-Misc-基础题"><a href="#BUUCTF-Misc-基础题" class="headerlink" title="BUUCTF-Misc-基础题"></a>BUUCTF-Misc-基础题</h2><h3 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h3><p><img src="/2020/04/22/misc-1/biubiu.jpg" alt="1-1"></p>
 <p>1、查看一下属性-详细信息（什么也没发现）</p>
 <p>2、用WinHex打开，看看旁边的ASCII，可能flag就隐藏在里面。拉到最后</p>
-<p><img src="/2020/04/22/misc-1/misc-1.png" alt="logo"></p>
+<p><img src="/2020/04/22/misc-1/misc-1.png" alt="1-2"></p>
 <p>然后就看到了flag。。。</p>
+<hr>
+<h3 id="LBS"><a href="#LBS" class="headerlink" title="LBS"></a>LBS</h3><p><img src="/2020/04/22/misc-1/flag11.png" alt="2-1"></p>
+<p>1、根据题目提示是LBS隐写</p>
+<p>2、直接用StegSolve打开-&gt;Analyse-&gt;Data Extract</p>
+<p>一般是RGB最后三个字节，那就先试试</p>
+<p><img src="/2020/04/22/misc-1/2-1.png" alt="2-2"></p>
+<p>然后Preview看看里面有啥</p>
+<p><img src="/2020/04/22/misc-1/2-2.png" alt="2-2"></p>
+<p>看到了png头文件，有东西，有戏，然后把它导出来保存为png。导出来为一个二维码</p>
+<p><img src="/2020/04/22/misc-1/flag.png" alt="2-3"></p>
+<p>这时候不用想肯定去扫二维码，然后你就看到了flag</p>
+<p><strong>cumtctf{1sb_i4_s0_Ea4y}</strong></p>
 
   </div>
 </article>
@@ -179,7 +195,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc的学习"><span class="toc-number">1.</span> <span class="toc-text">misc的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BUUCTF-Misc"><span class="toc-number">1.1.</span> <span class="toc-text">BUUCTF-Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#你竟然赶我走"><span class="toc-number">1.1.1.</span> <span class="toc-text">你竟然赶我走</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc的学习"><span class="toc-number">1.</span> <span class="toc-text">misc的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BUUCTF-Misc-基础题"><span class="toc-number">1.1.</span> <span class="toc-text">BUUCTF-Misc-基础题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#你竟然赶我走"><span class="toc-number">1.1.1.</span> <span class="toc-text">你竟然赶我走</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LBS"><span class="toc-number">1.1.2.</span> <span class="toc-text">LBS</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
