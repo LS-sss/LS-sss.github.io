@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/30/CRC/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/30/CRC/2.png">
 <meta property="article:published_time" content="2020-04-30T07:10:04.000Z">
-<meta property="article:modified_time" content="2020-04-30T07:26:46.020Z">
+<meta property="article:modified_time" content="2020-04-30T07:27:56.966Z">
 <meta property="article:author" content="lazy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/30/CRC/1.png">
@@ -108,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC校验"><span class="toc-number">1.</span> <span class="toc-text">CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#struct库的学习："><span class="toc-number">1.1.</span> <span class="toc-text">struct库的学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-bytearray-函数"><span class="toc-number">1.2.</span> <span class="toc-text">python  bytearray()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRC爆破宽高："><span class="toc-number">1.3.</span> <span class="toc-text">CRC爆破宽高：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC校验"><span class="toc-number">1.</span> <span class="toc-text">CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#struct库的学习："><span class="toc-number">1.1.</span> <span class="toc-text">struct库的学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-bytearray-函数"><span class="toc-number">1.2.</span> <span class="toc-text">python  bytearray()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRC爆破宽高："><span class="toc-number">1.3.</span> <span class="toc-text">CRC爆破宽高：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考："><span class="toc-number">1.4.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -166,7 +166,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line">crc32key = <span class="number">0xC2C143B3</span>    <span class="comment">#补上0x，winhex下copy hex value。</span></span><br><span class="line">data = bytearray(<span class="string">b'\x49\x48\x44\x52\x00\x00\x03\xE8\x00\x00\x03\x84\x08\x02\x00\x00\x00'</span>)   <span class="comment">#winhex下copy grep hex。</span></span><br><span class="line">n = <span class="number">4095</span> <span class="comment">#理论上0xffffffff,但考虑到屏幕实际/cpu，0x0fff就差不多了</span></span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> range(n):<span class="comment">#高和宽一起爆破</span></span><br><span class="line">    width = bytearray(struct.pack(<span class="string">'&gt;i'</span>, w))<span class="comment">#q为8字节，i为4字节，h为2字节</span></span><br><span class="line">    <span class="keyword">for</span> h <span class="keyword">in</span> range(n):</span><br><span class="line">        height = bytearray(struct.pack(<span class="string">'&gt;i'</span>, h))  <span class="comment"># w=1时 height=bytearray(b'\x00\x00\x00\x01')</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            data[x+<span class="number">4</span>] = width[x]</span><br><span class="line">            data[x+<span class="number">8</span>] = height[x]</span><br><span class="line">        crc32result = zlib.crc32(data)   <span class="comment">#zlib.crc32(data)计算data的CRC,结果为32位的整数</span></span><br><span class="line">        <span class="keyword">if</span> crc32result == crc32key:</span><br><span class="line">            print(width,height)</span><br></pre></td></tr></table></figure>
 
 <p>这个是根据CRC爆破出png宽高的大佬的代码</p>
-<blockquote>
+<hr>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><blockquote>
 <p><strong><a href="https://blog.csdn.net/w83761456/article/details/21171085/" target="_blank" rel="noopener">https://blog.csdn.net/w83761456/article/details/21171085/</a></strong></p>
 <p><a href="https://blog.csdn.net/weiwangchao_/article/details/80395941" target="_blank" rel="noopener">https://blog.csdn.net/weiwangchao_/article/details/80395941</a></p>
 <p><a href="https://www.jianshu.com/p/0b5d14657d2e" target="_blank" rel="noopener">https://www.jianshu.com/p/0b5d14657d2e</a></p>
@@ -196,7 +197,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC校验"><span class="toc-number">1.</span> <span class="toc-text">CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#struct库的学习："><span class="toc-number">1.1.</span> <span class="toc-text">struct库的学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-bytearray-函数"><span class="toc-number">1.2.</span> <span class="toc-text">python  bytearray()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRC爆破宽高："><span class="toc-number">1.3.</span> <span class="toc-text">CRC爆破宽高：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC校验"><span class="toc-number">1.</span> <span class="toc-text">CRC校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#struct库的学习："><span class="toc-number">1.1.</span> <span class="toc-text">struct库的学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-bytearray-函数"><span class="toc-number">1.2.</span> <span class="toc-text">python  bytearray()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRC爆破宽高："><span class="toc-number">1.3.</span> <span class="toc-text">CRC爆破宽高：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考："><span class="toc-number">1.4.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
