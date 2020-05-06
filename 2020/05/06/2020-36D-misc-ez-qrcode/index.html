@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="给了一个gif，里面有半个二维码  在SECCON CTF 2014里面有一道类似的题目，那题的wp：https:&#x2F;&#x2F;yous.be&#x2F;2014&#x2F;12&#x2F;07&#x2F;seccon-ctf-2014-qr-easy-write-up&#x2F; 首先拿到这个gif直接扫码是扫不出来的，虽然它只有一半，但是这里面已经包含了二维码里的所有的数据码，也就是说基本所有的信息都有了。 那么要怎么才能得到信息，这就需要手动解码数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020_36D_misc_ez_qrcode">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/index.html">
+<meta property="og:site_name" content="lazy&#39;s blog">
+<meta property="og:description" content="给了一个gif，里面有半个二维码  在SECCON CTF 2014里面有一道类似的题目，那题的wp：https:&#x2F;&#x2F;yous.be&#x2F;2014&#x2F;12&#x2F;07&#x2F;seccon-ctf-2014-qr-easy-write-up&#x2F; 首先拿到这个gif直接扫码是扫不出来的，虽然它只有一半，但是这里面已经包含了二维码里的所有的数据码，也就是说基本所有的信息都有了。 那么要怎么才能得到信息，这就需要手动解码数据">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/gif.gif">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/sss.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/sss2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/10.png">
+<meta property="article:published_time" content="2020-05-06T05:11:15.000Z">
+<meta property="article:modified_time" content="2020-05-06T06:04:16.308Z">
+<meta property="article:author" content="lazy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/gif.gif">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/shuijiao.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/cangshu1.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/cangshu1.png">
+          
+        
+    
+    <!-- title -->
+    <title>2020_36D_misc_ez_qrcode</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="lazy&#39;s blog" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/05/06/misc-easy/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/05/06/QR-code/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&text=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&is_video=false&description=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2020_36D_misc_ez_qrcode&body=Check out this article: http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&name=2020_36D_misc_ez_qrcode&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&t=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        2020_36D_misc_ez_qrcode
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">lazy's blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-05-06T05:11:15.000Z" itemprop="datePublished">2020-05-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>给了一个gif，里面有半个二维码</p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/gif.gif" alt="1-1"></p>
+<p>在<a href="https://yous.be/2014/12/07/seccon-ctf-2014-qr-easy-write-up/" target="_blank" rel="noopener">SECCON CTF 2014</a>里面有一道类似的题目，那题的wp：<a href="https://yous.be/2014/12/07/seccon-ctf-2014-qr-easy-write-up/" target="_blank" rel="noopener">https://yous.be/2014/12/07/seccon-ctf-2014-qr-easy-write-up/</a></p>
+<p>首先拿到这个gif直接扫码是扫不出来的，虽然它只有一半，但是这里面已经包含了二维码里的所有的数据码，也就是说基本所有的信息都有了。</p>
+<p>那么要怎么才能得到信息，这就需要手动解码数据。二维码的一些编码基础知识可以参考：</p>
+<p><a href="https://ls-sss.github.io/2020/05/06/QR-code/" target="_blank" rel="noopener">https://ls-sss.github.io/2020/05/06/QR-code/</a></p>
+<p><a href="https://www.thonky.com/qr-code-tutorial/data-analysis" target="_blank" rel="noopener">https://www.thonky.com/qr-code-tutorial/data-analysis</a></p>
+<p>1、首先手工补全二维码,可以使用这个<a href="https://merricx.github.io/qrazybox/" target="_blank" rel="noopener">QRazyBox</a>工具</p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/sss.png" alt="1-2"></p>
+<p>2、然后找到该二维码的格式信息</p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/1.png" alt="1-3"></p>
+<p>对应的是11100111是格式码的后8位</p>
+<p>查表得：ECC是H，掩码模式是2（（列）mod 3 == 0）</p>
+<p>3、根据数据区域和位顺图把D1-D26得数据码写出来</p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/2.png" alt="1-4"></p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/sss2.png" alt="1-5"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">D1:00010100</span><br><span class="line">D2:00110011</span><br><span class="line">D3:00110011</span><br><span class="line">D4:11000110 </span><br><span class="line">D5:00010110</span><br><span class="line">D6:11011101</span><br><span class="line">D7:00011111</span><br><span class="line">D8:00010011</span><br><span class="line">D9:00100001</span><br><span class="line">D10:00110110</span><br><span class="line">D11:00010110</span><br><span class="line">D12:11100110</span><br><span class="line">D13:10110011</span><br><span class="line">D14:10100010</span><br><span class="line">D15:00010001</span><br><span class="line">D16:01110110</span><br><span class="line">D17:01010111</span><br><span class="line">D18:01000100</span><br><span class="line">D19:00101100</span><br><span class="line">D20:01011110</span><br><span class="line">D21:00000010</span><br><span class="line">D22:01100110</span><br><span class="line">D23:01010111</span><br><span class="line">D24:11010000</span><br><span class="line">D25:11101101</span><br><span class="line">D26:01000100</span><br></pre></td></tr></table></figure>
+
+<p>因为有掩码模式，所以根据掩码模式写出未掩盖得数据码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">D1:01000001</span><br><span class="line">D2:01100110</span><br><span class="line">D3:01100110 </span><br><span class="line">D4:11000110 </span><br><span class="line">D5:00010110</span><br><span class="line">D6:01110111</span><br><span class="line">D7:10110101</span><br><span class="line">D8:01000110</span><br><span class="line">D9:01110100</span><br><span class="line">D10:00110110</span><br><span class="line">D11:00010110</span><br><span class="line">D12:11100110</span><br><span class="line">D13:11100110</span><br><span class="line">D14:11110111</span><br><span class="line">D15:01000100</span><br><span class="line">D16:01110110</span><br><span class="line">D17:01010111</span><br><span class="line">D18:01000100</span><br><span class="line">D19:10000110</span><br><span class="line">D20:11110111</span><br><span class="line">D21:01010111</span><br><span class="line">D22:00110110</span><br><span class="line">D23:01010111</span><br><span class="line">D24:11010000</span><br><span class="line">D25:11101100</span><br><span class="line">D26:00010001</span><br></pre></td></tr></table></figure>
+
+<p>4、接下来就可以解码数据了</p>
+<p>根据<a href="https://ls-sss.github.io/2020/05/06/QR-code/" target="_blank" rel="noopener">https://ls-sss.github.io/2020/05/06/QR-code/</a></p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/7.png" alt="1-6"></p>
+<p><img src="/2020/05/06/2020-36D-misc-ez-qrcode/10.png" alt="1-7"></p>
+<p>然后写脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">'01000001'</span> \</span><br><span class="line">  <span class="string">'01100110'</span> \</span><br><span class="line">  <span class="string">'01100110'</span> \</span><br><span class="line">  <span class="string">'11000110'</span> \</span><br><span class="line">  <span class="string">'00010110'</span> \</span><br><span class="line">  <span class="string">'01110111'</span> \</span><br><span class="line">  <span class="string">'10110101'</span> \</span><br><span class="line">  <span class="string">'01000110'</span> \</span><br><span class="line">  <span class="string">'01110100'</span> \</span><br><span class="line">  <span class="string">'00110110'</span> \</span><br><span class="line">  <span class="string">'00010110'</span> \</span><br><span class="line">  <span class="string">'11100110'</span> \</span><br><span class="line">  <span class="string">'11100110'</span> \</span><br><span class="line">  <span class="string">'11110111'</span> \</span><br><span class="line">  <span class="string">'01000100'</span> \</span><br><span class="line">  <span class="string">'01110110'</span> \</span><br><span class="line">  <span class="string">'01010111'</span> \</span><br><span class="line">  <span class="string">'01000100'</span> \</span><br><span class="line">  <span class="string">'10000110'</span> \</span><br><span class="line">  <span class="string">'11110111'</span> \</span><br><span class="line">  <span class="string">'01010111'</span> \</span><br><span class="line">  <span class="string">'00110110'</span> \</span><br><span class="line">  <span class="string">'01010111'</span> \</span><br><span class="line">  <span class="string">'11010000'</span> \</span><br><span class="line">  <span class="string">'11101100'</span> \</span><br><span class="line">  <span class="string">'00010001'</span></span><br><span class="line">data= <span class="string">'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:'</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    mod = s[i:i + <span class="number">4</span>]  <span class="comment"># 取模式指示器</span></span><br><span class="line">    i += <span class="number">4</span></span><br><span class="line">    <span class="comment">#print(mod)</span></span><br><span class="line">    <span class="keyword">if</span> mod == <span class="string">'0001'</span>:  <span class="comment">#数值模式</span></span><br><span class="line">        num = int(s[i:i + <span class="number">10</span>], <span class="number">2</span>)</span><br><span class="line">        i += <span class="number">10</span></span><br><span class="line">        <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">            num -= <span class="number">3</span></span><br><span class="line">            ss = int(s[i:i + <span class="number">10</span>], <span class="number">2</span>)</span><br><span class="line">            print(ss, end=<span class="string">''</span>)</span><br><span class="line">            i += <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> mod == <span class="string">'0010'</span>:</span><br><span class="line">        num = int(s[i:i + <span class="number">9</span>], <span class="number">2</span>)    <span class="comment">#字母数字模式</span></span><br><span class="line">        i += <span class="number">9</span></span><br><span class="line">        <span class="comment">#print(num)</span></span><br><span class="line">        <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">            num -= <span class="number">2</span></span><br><span class="line">            zm = int(s[i:i + <span class="number">11</span>], <span class="number">2</span>)</span><br><span class="line">            <span class="comment">#print(zm)</span></span><br><span class="line">            print(data[zm // <span class="number">45</span>], end=<span class="string">''</span>)</span><br><span class="line">            print(data[zm % <span class="number">45</span>], end=<span class="string">''</span>)</span><br><span class="line">            i += <span class="number">11</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> mod == <span class="string">'0100'</span>:       <span class="comment">#字节模式</span></span><br><span class="line">        num = int(s[i:i + <span class="number">8</span>], <span class="number">2</span>)</span><br><span class="line">        i += <span class="number">8</span></span><br><span class="line">        <span class="comment">#print(num)</span></span><br><span class="line">        <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">            num -= <span class="number">1</span></span><br><span class="line">            zj = int(s[i:i + <span class="number">8</span>], <span class="number">2</span>)</span><br><span class="line">            i += <span class="number">8</span></span><br><span class="line">            print(chr(zj), end=<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">elif</span> mod == <span class="string">'1000'</span>:   <span class="comment">#汉字模式</span></span><br><span class="line">        num = int(s[i:i + <span class="number">8</span>], <span class="number">2</span>)</span><br><span class="line">        i += <span class="number">8</span></span><br><span class="line">        <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">            num -= <span class="number">1</span></span><br><span class="line">            hz = hex(int(s[i:i + <span class="number">13</span>]), <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span> hz &gt;= <span class="number">0x1740</span>:</span><br><span class="line">                result = (<span class="number">0xC140</span> + hz // <span class="number">0xC0</span> * <span class="number">0x100</span> + hz % <span class="number">0xC0</span>)</span><br><span class="line">                print(chr(result).encode(encoding=<span class="string">"UTF_8"</span>))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result = (<span class="number">0x8140</span> + hz // <span class="number">0xC0</span> * <span class="number">0x100</span> + hz % <span class="number">0xC0</span>)</span><br><span class="line">                print(chr(result).encode(encoding=<span class="string">"UTF_8"</span>))</span><br><span class="line">            i += <span class="number">13</span></span><br><span class="line">    <span class="keyword">elif</span> mod==<span class="string">'0000'</span>:   <span class="comment">#结束符</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>运行就得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;TgCannotGetHouse&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>这题主要考的就是二维码的一些知识</em></p>
+<hr>
+<p>参考：</p>
+<p><a href="https://wp.ctf.show/d/114-36d-ez-qrcode-42" target="_blank" rel="noopener">https://wp.ctf.show/d/114-36d-ez-qrcode-42</a></p>
+<p><a href="https://yous.be/2014/12/07/seccon-ctf-2014-qr-easy-write-up/" target="_blank" rel="noopener">https://yous.be/2014/12/07/seccon-ctf-2014-qr-easy-write-up/</a></p>
+<p><a href="https://www.thonky.com/qr-code-tutorial/mask-patterns" target="_blank" rel="noopener">https://www.thonky.com/qr-code-tutorial/mask-patterns</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&text=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&is_video=false&description=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2020_36D_misc_ez_qrcode&body=Check out this article: http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&title=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&name=2020_36D_misc_ez_qrcode&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/05/06/2020-36D-misc-ez-qrcode/&t=2020_36D_misc_ez_qrcode" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 lazy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+  
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
