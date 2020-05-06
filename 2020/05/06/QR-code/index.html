@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/06/QR-code/9.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/06/QR-code/10.png">
 <meta property="article:published_time" content="2020-05-06T03:26:28.000Z">
-<meta property="article:modified_time" content="2020-05-06T05:09:02.505Z">
+<meta property="article:modified_time" content="2020-05-06T05:48:19.873Z">
 <meta property="article:author" content="lazy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/06/QR-code/2.png">
@@ -84,6 +84,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2020/05/06/2020-36D-misc-ez-qrcode/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2020/04/30/CRC/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -166,13 +168,13 @@
 <h3 id="解码数据"><a href="#解码数据" class="headerlink" title="解码数据"></a>解码数据</h3><p>数据的结构</p>
 <p><img src="/2020/05/06/QR-code/8.png" alt="1-6"></p>
 <p><strong>1、编码模式：</strong></p>
-<p>?      <em>数值模式</em>：使用于0-9的十进制数字，三个三个一起编码<strong>10位</strong>（如678=1010100110）</p>
-<p>?      <em>字母数字模式</em>：适用于0-9数字、大写（不包括小写）字母、符号$，％，<em>，+，-，。，/，：以及空格。两 个一起编码，*</em>11位**。第一个字母对应的数值乘与45加第二个字母对应的数值（如SE=10011111010）</p>
+<p>​      <em>数值模式</em>：使用于0-9的十进制数字，三个三个一起编码<strong>10位</strong>（如678=1010100110）</p>
+<p>​     <em>字母数字模式</em>：适用于0-9数字、大写（不包括小写）字母、符号$，％，<em>，+，-，。，/，：以及空格。两 个一起编码，*</em>11位**。第一个字母对应的数值乘与45加第二个字母对应的数值（如SE=10011111010）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-.&#x2F;:&#39;</span><br></pre></td></tr></table></figure>
 
 <p>各个字母对应的数值就是各个字母在上面字符串里的位置从0开始（如：“0”=0，“S”=28）</p>
-<p>?       <em>字节模式：</em>默认情况下适用于ISO-8859-1字符集中的字符。每个字母或者符号根据其在ISO-8859-1的位置编码成8位的二进制（如f=01100110）</p>
-<p>?        <em>汉字模式（一般在ctf里用不到）</em>：适用 于Shift JIS字符集中<strong>的双字节</strong>字符。首先把汉字转换成双字节，然后有两种编码双字节汉字字符的方法。(一般13位）一种方法是针对字节在0x8140到0x9FFC范围内的字符。另一种方法是针对字节在0xE040到0xEBBF范围内的字符。</p>
+<p>​      <em>字节模式：</em>默认情况下适用于ISO-8859-1字符集中的字符。每个字母或者符号根据其在ISO-8859-1的位置编码成8位的二进制（如f=01100110）</p>
+<p>​        <em>汉字模式（一般在ctf里用不到）</em>：适用 于Shift JIS字符集中<strong>的双字节</strong>字符。首先把汉字转换成双字节，然后有两种编码双字节汉字字符的方法。(一般13位）一种方法是针对字节在0x8140到0x9FFC范围内的字符。另一种方法是针对字节在0xE040到0xEBBF范围内的字符。</p>
 <p>对字节在0x8140到0x9FFC范围内的字符:</p>
 <p>首先减去0x8140，</p>
 <p>然后分成最高有效字节和最低有效字节（如0x0897的最高有效字节为0x08，最低有效字节为0x97），</p>
@@ -181,7 +183,7 @@
 <p>首先减去0xE040</p>
 <p>然后分成最高有效字节和最低有效字节</p>
 <p>然后将最高有效字节乘与0xC0加上最低有效字节</p>
-<p>?          <em>ECI模式</em>：指定字符集</p>
+<p>​          <em>ECI模式</em>：指定字符集</p>
 <p><img src="/2020/05/06/QR-code/9.png" alt="1-7"></p>
 <p>2、字符指针指示器</p>
 <p>字符计数指示器的长度取决于将要使用的编码模式和QR码版本</p>
